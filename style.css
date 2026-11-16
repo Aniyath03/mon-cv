@@ -1,0 +1,210 @@
+/* ===== Couleurs : modifiez ici pour changer le thème ===== */
+:root {
+  --prune: #5a4a82;          /* titres et texte d'accent */
+  --violet: #8a74c2;         /* détails, dates, puces */
+  --violet-clair: #c9bde8;   /* lignes et contours */
+  --lavande: #efe9f9;        /* bandeaux de rubriques */
+  --lavande-pale: #faf8fd;   /* fond de page */
+  --texte: #2f2a3d;
+  --texte-doux: #6a6380;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 2rem 1rem;
+  background: var(--lavande-pale);
+  color: var(--texte);
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  font-family: Georgia, "Times New Roman", serif;
+  margin: 0;
+}
+
+h3 {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+p {
+  margin: 0 0 0.4rem;
+}
+
+/* ===== Page du CV ===== */
+.cv {
+  max-width: 820px;
+  margin: 0 auto;
+  background: #fff;
+  border: 1px solid var(--violet-clair);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px rgba(90, 74, 130, 0.1);
+}
+
+/* ===== TITRE ===== */
+.titre {
+  padding: 2.5rem 2rem 2rem;
+  background: var(--lavande);
+  border-bottom: 4px solid var(--violet-clair);
+}
+
+.titre h1 {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--prune);
+}
+
+.titre .poste {
+  margin-top: 0.4rem;
+  font-size: 1.15rem;
+  color: var(--violet);
+  font-weight: 600;
+}
+
+.titre .contact {
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: var(--texte-doux);
+}
+
+/* ===== RUBRIQUES (chaque rubrique = un bloc délimité) ===== */
+.rubrique {
+  border-top: 1px solid var(--violet-clair);
+}
+
+.titre + .rubrique {
+  border-top: none;
+}
+
+.rubrique h2 {
+  padding: 0.55rem 2rem;
+  background: var(--lavande);
+  color: var(--prune);
+  font-size: 1.6rem;
+  font-weight: 600;
+  border-left: 8px solid var(--violet);
+  border-bottom: 1px solid var(--violet-clair);
+}
+
+.contenu {
+  padding: 1.5rem 2rem 1.75rem;
+  background: #fff;
+}
+
+/* ===== Entrées (formations, expériences, associations) ===== */
+.entree {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--violet-clair);
+}
+
+.entree:first-child {
+  padding-top: 0;
+}
+
+.entree:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.periode {
+  font-weight: 600;
+  color: var(--violet);
+}
+
+.detail h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--prune);
+}
+
+.lieu {
+  color: var(--texte-doux);
+  font-style: italic;
+}
+
+.detail ul {
+  margin: 0.4rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.detail li::marker {
+  color: var(--violet);
+}
+
+/* ===== Compétences ===== */
+.competences {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.competences li {
+  padding: 0.3rem 0.9rem;
+  background: var(--lavande);
+  color: var(--prune);
+  border: 1px solid var(--violet-clair);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  body {
+    padding: 0;
+  }
+
+  .cv {
+    border-radius: 0;
+    border-left: none;
+    border-right: none;
+  }
+
+  .titre h1 {
+    font-size: 2.3rem;
+  }
+
+  .entree {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}
+
+/* ===== Impression / export PDF ===== */
+@media print {
+  body {
+    padding: 0;
+    background: #fff;
+  }
+
+  .cv {
+    max-width: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .titre,
+  .rubrique h2,
+  .competences li {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .rubrique {
+    break-inside: avoid;
+  }
+}
